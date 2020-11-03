@@ -7,7 +7,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * @Description 测试偏向锁
- * 参考链接：http://www.360doc.com/content/20/1015/12/835902_940569768.shtml
+ * 参考链接：https://blog.csdn.net/q13145241q/article/details/108127174
  *
  * @Author chenzhengyu
  * @Date 2020-11-02 19:23
@@ -19,6 +19,7 @@ public class TestBiased {
         printInstanceObjectHeader();
         printInstanceObjectHeadBySyc();
         printInstanceObjectHeadBySycHashCode();
+        printInstanceObjectHeadByThread();
     }
 
     /**
@@ -61,14 +62,53 @@ public class TestBiased {
     public static void printInstanceObjectHeadBySycHashCode() {
         log.debug("printInstanceObjectHeadBySycHashCode...");
         Dog dog = new Dog();
+        //调用HashCode会禁用这个对象的偏向锁，观察对象头已经给填充
         log.debug(dog.toString());
-        //加锁前： 对象头末端显示101 证明启用了偏向锁，剩下54位是线程ID
         log.debug(ClassLayout.parseInstance(dog).toPrintable());
         synchronized (dog) {
             log.debug(ClassLayout.parseInstance(dog).toPrintable());
         }
         //线程ID 直接偏向此线程 线程ID进行了存储
         log.debug(ClassLayout.parseInstance(dog).toPrintable());
+    }
+
+    /**
+     * 验证线程加锁 2个线程访问的时间错开
+     */
+    public static void printInstanceObjectHeadByThread(){
+        log.debug("printInstanceObjectHeadByThread...");
+        Dog dog = new Dog();
+
+        Thread t1 = new Thread(() -> {
+            log.debug(ClassLayout.parseInstance(dog).toPrintable());
+            synchronized (dog) {
+                log.debug("线程ID添加至对象头..."+ClassLayout.parseInstance(dog).toPrintable());
+            }
+            log.debug("解锁，线程ID保存在对象头中..."+ClassLayout.parseInstance(dog).toPrintable());
+            synchronized (TestBiased.class){
+                //唤醒
+                TestBiased.class.notify();
+            }
+        }, "t1");
+
+        Thread t2 = new Thread(() -> {
+            //t2一上来并没有往下运行，而是先等待。结束等待是等t1结束后再通知t2线程
+            synchronized (TestBiased.class){
+                try {
+                    TestBiased.class.wait();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            log.debug("t2线程中，偏向锁失效，进入轻量级锁的状态..."+ClassLayout.parseInstance(dog).toPrintable());
+            synchronized (dog) {
+                log.debug(ClassLayout.parseInstance(dog).toPrintable());
+            }
+            log.debug(ClassLayout.parseInstance(dog).toPrintable());
+        }, "t2");
+
+        t1.start();
+        t2.start();
     }
 }
 
