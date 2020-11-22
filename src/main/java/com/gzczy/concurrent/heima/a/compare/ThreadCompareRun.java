@@ -1,4 +1,4 @@
-package com.gzczy.concurrent.week1.compare;
+package com.gzczy.concurrent.heima.a.compare;
 
 import lombok.extern.slf4j.Slf4j;
 

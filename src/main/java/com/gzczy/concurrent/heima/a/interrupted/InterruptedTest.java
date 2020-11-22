@@ -1,7 +1,8 @@
-package com.gzczy.concurrent.week1.interrupted;
+package com.gzczy.concurrent.heima.a.interrupted;
 
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.LockSupport;
 
 import static java.lang.Thread.sleep;
@@ -14,9 +15,17 @@ public class InterruptedTest {
 
     public static void main(String[] args) throws Exception {
         InterruptedTest.test1();
+        TimeUnit.SECONDS.sleep(5);
+        log.debug("test1 finish... ");
         InterruptedTest.test2();
+        TimeUnit.SECONDS.sleep(5);
+        log.debug("test2 finish... ");
         InterruptedTest.test3();
+        TimeUnit.SECONDS.sleep(5);
+        log.debug("test3 finish... ");
+        TimeUnit.SECONDS.sleep(5);
         InterruptedTest.test4();
+        log.debug("test4 finish... ");
     }
 
     /**

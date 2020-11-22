@@ -1,4 +1,4 @@
-package com.gzczy.concurrent.week1.createthread;
+package com.gzczy.concurrent.heima.a.createthread;
 
 import lombok.extern.slf4j.Slf4j;
 

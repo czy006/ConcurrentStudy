@@ -1,4 +1,4 @@
-package com.gzczy.concurrent.week1.compare;
+package com.gzczy.concurrent.heima.a.compare;
 
 /**
  * 测试结论
@@ -9,17 +9,19 @@ public class ThreadCompareSleep {
 
     public static void main(String[] args) {
         ThreadCompareSleep t1 = new ThreadCompareSleep();
-//        t1.demo1();
+        //只能执行其中1个 请备注
+        t1.demo1();
         t1.demo2();
     }
 
-    public void demo1(){
+    public void demo1() {
         Runnable task1 = new Runnable() {
             int count = 0;
+
             @Override
             public void run() {
-                while (true){
-                    System.out.println("countTask1====>"+count);
+                while (true) {
+                    System.out.println("countTask1====>" + count);
                     count++;
                 }
             }
@@ -27,29 +29,31 @@ public class ThreadCompareSleep {
 
         Runnable task2 = new Runnable() {
             int count = 0;
+
             @Override
             public void run() {
-                while (true){
+                while (true) {
                     Thread.yield();
-                    System.out.println("countTask2====>"+count);
+                    System.out.println("countTask2====>" + count);
                     count++;
                 }
             }
         };
 
-        Thread t1 = new Thread(task1,"task1");
-        Thread t2 = new Thread(task2,"task2");
+        Thread t1 = new Thread(task1, "task1");
+        Thread t2 = new Thread(task2, "task2");
         t1.start();
         t2.start();
     }
 
-    public void demo2(){
+    public void demo2() {
         Runnable task1 = new Runnable() {
             int count = 0;
+
             @Override
             public void run() {
-                while (true){
-                    System.out.println("countTask1====>"+count);
+                while (true) {
+                    System.out.println("countTask1====>" + count);
                     count++;
                 }
             }
@@ -57,17 +61,18 @@ public class ThreadCompareSleep {
 
         Runnable task2 = new Runnable() {
             int count = 0;
+
             @Override
             public void run() {
-                while (true){
-                    System.out.println("countTask2====>"+count);
+                while (true) {
+                    System.out.println("countTask2====>" + count);
                     count++;
                 }
             }
         };
 
-        Thread t1 = new Thread(task1,"task1");
-        Thread t2 = new Thread(task2,"task2");
+        Thread t1 = new Thread(task1, "task1");
+        Thread t2 = new Thread(task2, "task2");
         //设置线程优先度
         t1.setPriority(Thread.MAX_PRIORITY);
         t2.setPriority(Thread.MIN_PRIORITY);

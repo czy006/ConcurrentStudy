@@ -1,9 +1,12 @@
-package com.gzczy.concurrent.week1.join;
+package com.gzczy.concurrent.heima.a.join;
 
 import lombok.extern.slf4j.Slf4j;
 
 import static java.lang.Thread.sleep;
 
+/**
+ * 有时效的join测试
+ */
 @Slf4j(topic = "c.JoinTestThread")
 public class TimeByJoin {
 
@@ -21,6 +24,7 @@ public class TimeByJoin {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+            //还没来的及赋值 已经超时了
             r1 = 10;
         });
         long start = System.currentTimeMillis();
