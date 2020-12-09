@@ -20,6 +20,26 @@ public class ExecutorPoolTest {
 
         ExecutorService fixedThreadPool = Executors.newFixedThreadPool(2);
         extractedFixedPool(fixedThreadPool);
+        exceptionTest(fixedThreadPool);
+
+    }
+
+    /**
+     * 线程池处理异常的2种方法
+     * 1）主动try catch 捕获异常
+     * 2）Future 返回异常
+     * @param fixedThreadPool
+     * @throws InterruptedException
+     * @throws ExecutionException
+     */
+    private static void exceptionTest(ExecutorService fixedThreadPool) throws InterruptedException, ExecutionException {
+        //使用 Future接收错误并且输出
+        Future<Boolean> f = fixedThreadPool.submit(() -> {
+            log.debug("task1");
+            int i = 1 / 0;
+            return true;
+        });
+        log.debug("result:{}", f.get());
     }
 
     private static void extractedFixedPool(ExecutorService fixedThreadPool) throws InterruptedException, ExecutionException {
