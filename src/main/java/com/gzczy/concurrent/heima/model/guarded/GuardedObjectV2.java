@@ -1,4 +1,4 @@
-package com.gzczy.concurrent.model.guarded;
+package com.gzczy.concurrent.heima.model.guarded;
 
 import lombok.extern.slf4j.Slf4j;
 

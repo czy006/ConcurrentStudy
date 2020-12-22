@@ -1,4 +1,4 @@
-package com.gzczy.concurrent.model.guarded;
+package com.gzczy.concurrent.heima.model.guarded;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -14,6 +14,17 @@ import java.util.concurrent.TimeUnit;
  */
 @Slf4j(topic = "c.GuardedObjectV3")
 public class GuardedObjectV3 {
+
+    public static void main(String[] args) throws InterruptedException {
+        for (int i = 0; i < 3; i++) {
+            new Thread(new People(),"t1").start();
+        }
+        TimeUnit.SECONDS.sleep(3);
+        Set<Integer> ids = MailBox.getIds();
+        for (Integer id : ids) {
+            new Thread(new PostMan(id, "内容" + id),"t2").start();
+        }
+    }
 
     private int id;
 
@@ -59,18 +70,6 @@ public class GuardedObjectV3 {
             this.notifyAll();
         }
     }
-
-    public static void main(String[] args) throws InterruptedException {
-        for (int i = 0; i < 3; i++) {
-            new Thread(new People(),"t1").start();
-        }
-        TimeUnit.SECONDS.sleep(1);
-        for (Integer id : MailBox.getIds()) {
-            new Thread(new PostMan(id, "内容" + id),"t2").start();
-        }
-    }
-
-
 }
 
 @Slf4j(topic = "c.GuardedObjectV3")
