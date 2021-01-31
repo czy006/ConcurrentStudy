@@ -1,4 +1,4 @@
-package com.gzczy.concurrent.heima.b;
+package com.gzczy.concurrent.heima.b.wait;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
  * @Date 2020-11-04 15:03
  */
 @Slf4j(topic = "c.WaitNotifyDemo")
-public class WaitNotifyDemo {
+public class WaitNotifyDemo1 {
 
     final static Object obj = new Object();
 
