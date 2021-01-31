@@ -1,4 +1,4 @@
-package com.gzczy.concurrent.heima.fifth;
+package com.gzczy.concurrent.heima.c;
 
 
 import static java.lang.Thread.sleep;

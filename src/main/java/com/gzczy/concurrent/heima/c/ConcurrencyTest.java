@@ -1,7 +1,8 @@
-package com.gzczy.concurrent.heima.fifth;
+package com.gzczy.concurrent.heima.c;
 
 import org.openjdk.jcstress.annotations.*;
 import org.openjdk.jcstress.infra.results.I_Result;
+
 /**
  * @Description JIT指令重排演示
  * @Author chenzhengyu
