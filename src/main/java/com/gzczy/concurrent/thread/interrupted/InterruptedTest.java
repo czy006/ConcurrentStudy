@@ -1,4 +1,4 @@
-package com.gzczy.concurrent.heima.a.interrupted;
+package com.gzczy.concurrent.thread.interrupted;
 
 import lombok.extern.slf4j.Slf4j;
 

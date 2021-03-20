@@ -1,4 +1,4 @@
-package com.gzczy.concurrent.heima.a.join;
+package com.gzczy.concurrent.thread.join;
 
 import lombok.extern.slf4j.Slf4j;
 

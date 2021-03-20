@@ -1,4 +1,4 @@
-package com.gzczy.concurrent.heima.a.exercise;
+package com.gzczy.concurrent.thread.exercise;
 
 import lombok.extern.slf4j.Slf4j;
 
