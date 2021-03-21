@@ -17,7 +17,85 @@ public class CompletableFutureDemo {
 
     public static void main(String[] args) throws Exception {
         //m1();
-        m2();
+        //m2();
+        //m3();
+        //m4();
+        //m5();
+        //m6();
+    }
+
+    /**
+     * 合并计算结果
+     */
+    private static void m6() {
+        CompletableFuture.supplyAsync(() -> {
+            return 10;
+        }).thenCombine(CompletableFuture.supplyAsync(()->{
+            return 20;
+        }),(r1,r2)->{
+            return r1+r2;
+        }).join();
+    }
+
+    /**
+     * applyToEither: 哪个先计算完成就选用哪个
+     */
+    private static void m5() {
+        System.out.println(CompletableFuture.supplyAsync(() -> {
+            try {
+                TimeUnit.SECONDS.sleep(1);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            return 1;
+        }).applyToEither(CompletableFuture.supplyAsync(() -> {
+            try {
+                TimeUnit.SECONDS.sleep(2);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            return 2;
+        }), r -> {
+            return r;
+        }).join());
+    }
+
+    private static void m4() {
+        //thenAccept内部是void 的 消费型接口
+        CompletableFuture.supplyAsync(() -> {
+            return 1;
+        }).thenApply(x -> {
+            return x + 1;
+        }).thenAccept(System.out::println).join();
+
+        System.out.println(CompletableFuture.supplyAsync(() -> "resultA").thenRun(() -> {
+        }).join());
+        System.out.println(CompletableFuture.supplyAsync(() -> "resultA").thenAccept(resultA -> {
+        }).join());
+        System.out.println(CompletableFuture.supplyAsync(() -> "resultA").thenApply(resultA -> resultA + "resultB").join());
+    }
+
+    /**
+     * handle 使用方法：即使出现异常仍然能够继续往下走
+     */
+    private static void m3() {
+        System.out.println(CompletableFuture.supplyAsync(() -> {
+            return 1;
+        }).handle((f, e) -> {
+            System.out.println("======1======");
+            int i = 10 / 0;
+            return f + 2;
+        }).handle((f, e) -> {
+            System.out.println("======2======");
+            return f + 3;
+        }).whenComplete((v, e) -> {
+            if (e == null) {
+                System.out.println("result" + v);
+            }
+        }).exceptionally(e -> {
+            e.printStackTrace();
+            return null;
+        }).join());
     }
 
     /**
