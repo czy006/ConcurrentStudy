@@ -1,4 +1,4 @@
-package com.gzczy.concurrent.heima.b.threadlock;
+package com.gzczy.concurrent.sync.threadlock;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -6,7 +6,9 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * @Description 线程8锁案例演示
- * 答案： 3 等待1s 输出1 和 2 ；2 3 输出后 等待 1s 输出1 ； 3 2 输出后等待 1s 输出1
+ * 答案：
+ * 第一种：3 然后等待1s 输出1 和 2
+ * 第二种：3 然后输出后2， 等待 1s 输出1
  * c也是由n1对象前往调用，但是没有添加锁关键字，所以更不不会考虑互斥，会并行的执行
  * @Author chenzhengyu
  * @Date 2020-10-28 18:47

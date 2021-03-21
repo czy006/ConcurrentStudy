@@ -1,4 +1,4 @@
-package com.gzczy.concurrent.heima.b.threadlock;
+package com.gzczy.concurrent.sync.threadlock;
 
 import lombok.extern.slf4j.Slf4j;
 
