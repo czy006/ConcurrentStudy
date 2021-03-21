@@ -1,4 +1,4 @@
-package com.gzczy.concurrent.heima.c;
+package com.gzczy.concurrent._volatile;
 
 
 import static java.lang.Thread.sleep;
@@ -8,7 +8,7 @@ import static java.lang.Thread.sleep;
  * @Author chenzhengyu
  * @Date 2020-11-17 18:33
  */
-public class Test1 {
+public class STWDemo {
 
     //使用volatile 进行修饰后线程可见
     static boolean run = true;
