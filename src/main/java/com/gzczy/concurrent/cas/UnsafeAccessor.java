@@ -1,4 +1,4 @@
-package com.gzczy.concurrent.heima.d;
+package com.gzczy.concurrent.cas;
 
 import lombok.Data;
 import sun.misc.Unsafe;
@@ -7,6 +7,7 @@ import java.lang.reflect.Field;
 
 /**
  * @Description UnSafe反射调用测试
+ * 实际生产切勿使用UnSafe魔法类！！！！
  * @Author chenzhengyu
  * @Date 2020-11-28 18:59
  */

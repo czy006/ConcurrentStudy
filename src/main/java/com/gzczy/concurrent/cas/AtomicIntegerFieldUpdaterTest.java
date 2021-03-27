@@ -1,4 +1,4 @@
-package com.gzczy.concurrent.heima.d;
+package com.gzczy.concurrent.cas;
 
 import java.util.concurrent.atomic.AtomicIntegerFieldUpdater;
 

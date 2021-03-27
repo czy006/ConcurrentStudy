@@ -1,4 +1,4 @@
-package com.gzczy.concurrent.heima.d;
+package com.gzczy.concurrent.cas;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -13,13 +13,13 @@ public class AtomicIntegerTest {
 
         AtomicInteger a1 = new AtomicInteger(0);
 
-        // 获取并自增（i = 0, 结果 i = 1, 返回 0），类似于 i++
+        // 获取并自增L（i = 0, 结果 i = 1, 返回 0），类似于 i++
         System.out.println(a1.getAndIncrement());
         // 自增并获取（i = 1, 结果 i = 2, 返回 2），类似于 ++i
         System.out.println(a1.incrementAndGet());
         // 自减并获取（i = 2, 结果 i = 1, 返回 1），类似于 --i
         System.out.println(a1.decrementAndGet());
-        // 获取并自减（i = 1, 结果 i = 0, 返回 1），类似于
+        // 获取并自减（i = 1, 结果 i = 0, 返回 1），类似于 i--
         System.out.println(a1.getAndDecrement());
 
         System.out.println("==============分割线==============");
