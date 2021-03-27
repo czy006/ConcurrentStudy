@@ -6,25 +6,15 @@
 ## 2.项目模块说明
 ```
 ConcurrentStudy -- 父项目，公共依赖
-│  ├─heima -- 黑马并发编程
-│  │  ├─a -- 第一章：概览、第二章：进程与线程、第三章：Java线程 (p1-p50)
-│  │  │─b -- 第四章：共享模型之管程(p51-p133)
-│  │  │─c -- 第五章：共享模型之内存(p134-p157)
-│  │  ├─d -- 第六章：共享模型之无锁(p158-p187)
-│  │  ├─e -- 第七章：共享模型之不可变（p188-p198）
-│  │  ├─f -- 第八章：共享模型之工具（p199-301）
-│  │  ├─model -- 线程模式总结
-
---------------重新整理后--------------
-
-ConcurrentStudy -- 父项目，公共依赖
 │  
-│  │─_volatile (Todo)
-│  │  ├─ 
-│  │─cas CompareAndSwap (Todo)
-│  │  ├─ 
+│  │─_volatile
+│  │─cas CompareAndSwap
 │  ├─sync synchronized锁机制 (Todo)
 │  │  ├─ threadlock 线程8锁
+│  │  ├─ threadsafe 线程安全演示
+│  │  ├─ wait 等待机制
+│  │  ├─ monitor 管程
+│  │  ├─ biased 偏向锁
 │  ├─thread 线程基础
 │  │  ├─ compare 线程运行对比
 │  │  ├─ complete CompletableFuture演示案例
@@ -34,7 +24,9 @@ ConcurrentStudy -- 父项目，公共依赖
 │  │  ├─ interrupted 打断通知工作机制
 │  │  ├─ join 等待机制
 │  ├─threadlocal -- Threadlocal 实际使用
+│  ├─threadpool -- 线程池相关案例
 │  ├─model -- 线程模式总结
+│  ├─util -- Java并发编程工具类使用demo
 
 ```
 ## 3.关于我
