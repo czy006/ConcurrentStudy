@@ -1,4 +1,4 @@
-package com.gzczy.concurrent.heima.f;
+package com.gzczy.concurrent.utils;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -14,7 +14,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @Date 2021-02-16 09:06
  */
 @Slf4j(topic = "c.Resource")
-public class MyResource {
+public class ProductAndConsumerV3 {
 
     // 默认开启，进行生产消费
     // 这里用到了volatile是为了保持数据的可见性，也就是当TLAG修改时，要马上通知其它线程进行修改
@@ -27,7 +27,7 @@ public class MyResource {
     BlockingQueue<String> queue = null;
 
     //依赖注入 构造方法传入
-    public MyResource(BlockingQueue<String> queue) {
+    public ProductAndConsumerV3(BlockingQueue<String> queue) {
         this.queue = queue;
         log.info("Loading in ..." + queue.getClass().getName());
     }
@@ -89,14 +89,14 @@ public class MyResource {
 
     public static void main(String[] args) {
         // 传入具体的实现类， ArrayBlockingQueue
-        MyResource myResource = new MyResource(new ArrayBlockingQueue<String>(10));
+        ProductAndConsumerV3 productAndConsumerV3 = new ProductAndConsumerV3(new ArrayBlockingQueue<String>(10));
 
         new Thread(() -> {
             System.out.println(Thread.currentThread().getName() + "\t 生产线程启动");
             System.out.println("");
             System.out.println("");
             try {
-                myResource.producer();
+                productAndConsumerV3.producer();
                 System.out.println("");
                 System.out.println("");
             } catch (Exception e) {
@@ -109,7 +109,7 @@ public class MyResource {
             System.out.println(Thread.currentThread().getName() + "\t 消费线程启动");
 
             try {
-                myResource.consumer();
+                productAndConsumerV3.consumer();
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -125,6 +125,6 @@ public class MyResource {
         System.out.println("");
         System.out.println("");
         System.out.println("5秒中后，生产和消费线程停止，线程结束");
-        myResource.stop();
+        productAndConsumerV3.stop();
     }
 }

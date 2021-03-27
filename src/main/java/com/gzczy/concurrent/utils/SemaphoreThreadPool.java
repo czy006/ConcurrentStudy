@@ -1,6 +1,7 @@
-package com.gzczy.concurrent.heima.f;
+package com.gzczy.concurrent.utils;
 
-import com.gzczy.concurrent.heima.e.MockConnection;
+import com.gzczy.concurrent.threadpool.MockConnection;
+import com.gzczy.concurrent.threadpool.Pool;
 import lombok.extern.slf4j.Slf4j;
 
 import java.sql.Connection;
@@ -10,7 +11,7 @@ import java.util.concurrent.atomic.AtomicIntegerArray;
 
 /**
  * @Description Semaphore信号量控制资源数
- * 基于#{@link com.gzczy.concurrent.heima.e.Pool} 进行升级改造 去除wait notifyAll方式
+ * 基于#{@link Pool} 进行升级改造 去除wait notifyAll方式
  * @Author chenzhengyu
  * @Date 2020-12-14 20:37
  */
