@@ -1,4 +1,4 @@
-package com.gzczy.concurrent.heima.model.produce;
+package com.gzczy.concurrent.model.produce;
 
 import lombok.extern.slf4j.Slf4j;
 

@@ -1,4 +1,4 @@
-package com.gzczy.concurrent.heima.model.twostep;
+package com.gzczy.concurrent.model.twostep;
 
 import lombok.extern.slf4j.Slf4j;
 

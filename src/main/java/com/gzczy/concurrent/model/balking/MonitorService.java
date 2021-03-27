@@ -1,4 +1,4 @@
-package com.gzczy.concurrent.heima.model.balking;
+package com.gzczy.concurrent.model.balking;
 
 import lombok.extern.slf4j.Slf4j;
 
