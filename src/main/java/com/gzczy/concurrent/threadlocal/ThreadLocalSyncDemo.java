@@ -1,4 +1,4 @@
-package com.gzczy.concurrent.heima.threadlocal;
+package com.gzczy.concurrent.threadlocal;
 
 import lombok.extern.slf4j.Slf4j;
 
