@@ -1,4 +1,4 @@
-package com.gzczy.concurrent.heima.d;
+package com.gzczy.concurrent.cas;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -22,6 +22,7 @@ public class SpinLockDemo {
 
     public void lock(){
         Thread t = Thread.currentThread();
+        //限制自旋次数
         while (!atomic.compareAndSet(null,t) && count.intValue() < 10){
             log.info("SpinLock try in ... count ====>" + count.intValue());
             count.increment();
