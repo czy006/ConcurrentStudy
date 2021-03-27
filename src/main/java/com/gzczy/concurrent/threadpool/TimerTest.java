@@ -1,4 +1,4 @@
-package com.gzczy.concurrent.heima.f;
+package com.gzczy.concurrent.threadpool;
 
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
